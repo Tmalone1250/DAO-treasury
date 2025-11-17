@@ -20,7 +20,7 @@ contract DAOTokenTest is Test {
         token = new DAOToken();
         
         // Add minter - the deployer should have owner rights
-        // token.addMinter(minter); // Temporarily commented out
+        token.addMinter(minter);
     }
 
     function testInitialState() public {
@@ -29,7 +29,7 @@ contract DAOTokenTest is Test {
         assertEq(token.totalSupply(), 0);
         assertEq(token.owner(), owner);
         assertTrue(token.minters(owner));
-        // assertTrue(token.minters(minter)); // Temporarily commented out
+        assertTrue(token.minters(minter));
     }
 
     function testMinting() public {
@@ -38,7 +38,11 @@ contract DAOTokenTest is Test {
         
         assertEq(token.balanceOf(user1), 1000);
         assertEq(token.totalSupply(), 1000);
-        assertEq(token.getVotes(user1), 1000); // Auto-delegation to self
+        
+        // Need to delegate to self to have voting power
+        vm.prank(user1);
+        token.delegate(user1);
+        assertEq(token.getVotes(user1), 1000);
     }
 
     function testMintingAccessControl() public {
@@ -72,9 +76,14 @@ contract DAOTokenTest is Test {
         vm.prank(minter);
         token.mint(user1, 1000);
         
-        // Initially delegated to self
-        assertEq(token.getVotes(user1), 1000);
+        // Initially no voting power (not delegated)
+        assertEq(token.getVotes(user1), 0);
         assertEq(token.getVotes(user2), 0);
+        
+        // Delegate to self first
+        vm.prank(user1);
+        token.delegate(user1);
+        assertEq(token.getVotes(user1), 1000);
         
         // Delegate to user2
         vm.prank(user1);
@@ -87,6 +96,9 @@ contract DAOTokenTest is Test {
     function testVotingPowerHistory() public {
         vm.prank(minter);
         token.mint(user1, 1000);
+        
+        vm.prank(user1);
+        token.delegate(user1);
         
         uint256 blockNumber = block.number;
         vm.roll(blockNumber + 1);

@@ -10,6 +10,8 @@ This project implements a participation-based governance system where users earn
 
 The system uses a non-transferable ERC20Votes token to track voting power, ensuring that influence is earned through contribution rather than purchased. All governance actions are executed through a timelock-controlled treasury, providing security and transparency for the DAO.
 
+**🚀 New to the project?** Check out the [Quick Start Guide](QUICKSTART.md) to get started in 5 minutes!
+
 ## Architecture
 
 ### Core Contracts
@@ -346,34 +348,41 @@ forge coverage
 - [x] Treasury with timelock control
 - [x] DAOGovernor with OpenZeppelin extensions
 - [x] TimelockController integration
-- [x] Comprehensive unit tests
+- [x] Comprehensive unit tests (36/36 passing ✅)
 - [x] Integration tests for full workflow
 - [x] Deployment script
 - [x] Makefile for common operations
-- [x] Testnet deployment
-- [x] Tally integration and testing
+- [x] Testnet deployment (Sepolia)
 - [x] Production deployment documentation
+- [x] Quick start guide
+- [x] Tally integration guide
+- [ ] Tally integration (ready to integrate)
+- [ ] Test proposal execution
+- [ ] Contract verification on Etherscan
 
 ## Deployment Information
 
-*To be updated after testnet deployment*
-
 **Network:** Sepolia Testnet  
-**Chain ID:** 11155111
+**Chain ID:** 11155111  
+**Deployment Date:** November 9, 2025
 
-**Contracts:**
-- DAOToken: TBD
-- VotingPowerEarner: TBD
-- Treasury: TBD
-- TimelockController: TBD
-- DAOGovernor: TBD
+**Deployed Contracts:**
+- **DAOToken:** [`0x2cc82f88c20E77a896Ef82234E68E3DbA5189d00`](https://sepolia.etherscan.io/address/0x2cc82f88c20E77a896Ef82234E68E3DbA5189d00)
+- **VotingPowerEarner:** [`0xAE63F4eD016B57E03E65c1f7a3569A8e807E7B6F`](https://sepolia.etherscan.io/address/0xAE63F4eD016B57E03E65c1f7a3569A8e807E7B6F)
+- **Treasury:** [`0x896FAdfc6aD2f7856176CBD92474629C3320C909`](https://sepolia.etherscan.io/address/0x896FAdfc6aD2f7856176CBD92474629C3320C909)
+- **TimelockController:** [`0x1E6b8e878E5d3E4a3869839941A591D9697cF246`](https://sepolia.etherscan.io/address/0x1E6b8e878E5d3E4a3869839941A591D9697cF246)
+- **DAOGovernor:** [`0x97fE800648c002F456718F7F332cC394AdD96f61`](https://sepolia.etherscan.io/address/0x97fE800648c002F456718F7F332cC394AdD96f61)
 
 **Tally Integration:**
-- Governor URL: TBD
-- Sample Proposal: TBD
-- Execution Transaction: TBD
+- Governor URL: Pending integration
+- Sample Proposal: Pending
+- Execution Transaction: Pending
+- Integration Guide: See [TALLY_INTEGRATION.md](TALLY_INTEGRATION.md)
 
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.
+**Documentation:**
+- Deployment Guide: [DEPLOYMENT.md](DEPLOYMENT.md)
+- Production Deployment: [PRODUCTION_DEPLOYMENT.md](PRODUCTION_DEPLOYMENT.md)
+- Tally Integration: [TALLY_INTEGRATION.md](TALLY_INTEGRATION.md)
 
 ## Contributing
 

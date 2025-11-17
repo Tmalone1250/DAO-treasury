@@ -11,49 +11,31 @@ import "lib/openzeppelin-contracts/contracts/interfaces/IERC5805.sol";
 
 contract DAOGovernor is Governor, GovernorSettings, GovernorCountingSimple, GovernorVotes, GovernorTimelockControl {
 
-    // State Variables
-    uint256 public constant QUORUM_VOTES = 40000;
+    uint256 private constant QUORUM_VOTES = 40000;
 
-    // Constructor
     constructor(
         address _token, 
         TimelockController _timelock
     ) 
         Governor("ParticipationDAO Governor") 
-        GovernorSettings(1, 259200, 500) // 1 block delay, ~3 days voting, 500 token threshold
+        GovernorSettings(1, 259200, 500)
         GovernorVotes(IVotes(_token))
         GovernorTimelockControl(_timelock)
     {}
 
-    // Required overrides
-    function quorum(uint256 /* blockNumber */) public pure override returns (uint256) {
+    function quorum(uint256) public pure override returns (uint256) {
         return QUORUM_VOTES;
     }
 
-    function proposalThreshold() 
-        public 
-        view 
-        override(Governor, GovernorSettings) 
-        returns (uint256) 
-    {
+    function proposalThreshold() public view override(Governor, GovernorSettings) returns (uint256) {
         return super.proposalThreshold();
     }
 
-    function state(uint256 proposalId) 
-        public 
-        view 
-        override(Governor, GovernorTimelockControl) 
-        returns (ProposalState) 
-    {
+    function state(uint256 proposalId) public view override(Governor, GovernorTimelockControl) returns (ProposalState) {
         return super.state(proposalId);
     }
 
-    function proposalNeedsQueuing(uint256 proposalId)
-        public
-        view
-        override(Governor, GovernorTimelockControl)
-        returns (bool)
-    {
+    function proposalNeedsQueuing(uint256 proposalId) public view override(Governor, GovernorTimelockControl) returns (bool) {
         return super.proposalNeedsQueuing(proposalId);
     }
 
