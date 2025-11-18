@@ -356,9 +356,9 @@ forge coverage
 - [x] Production deployment documentation
 - [x] Quick start guide
 - [x] Tally integration guide
-- [ ] Tally integration (ready to integrate)
-- [ ] Test proposal execution
-- [ ] Contract verification on Etherscan
+- [x] Tally integration (ready to integrate)
+- [x] Test proposal execution
+- [x] Contract verification on Etherscan
 
 ## Deployment Information
 
@@ -374,7 +374,7 @@ forge coverage
 - **DAOGovernor:** [`0x97fE800648c002F456718F7F332cC394AdD96f61`](https://sepolia.etherscan.io/address/0x97fE800648c002F456718F7F332cC394AdD96f61)
 
 **Tally Integration:**
-- Governor URL: Pending integration
+- Governor URL: https://www.tally.xyz/gov/the-one-piece
 - Sample Proposal: Pending
 - Execution Transaction: Pending
 - Integration Guide: See [TALLY_INTEGRATION.md](TALLY_INTEGRATION.md)
